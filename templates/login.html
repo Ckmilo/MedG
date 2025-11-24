@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / MedG</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_style.css') }}">
+    
+</head>
+<body>
+    
+    <main>
+
+        <section class="logo">
+            <div class="logo_img">
+                <h1>Med</h1>
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo">
+            </div>
+            <p>Tu salud digital, más cerca</p>
+        </section>
+       
+
+        <section class="fondo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="fondo">
+        </section>
+
+        <section class="box_contenido">
+            <form class="formulario" action="{{ url_for('login') }}" method="POST">
+                    {% with mensajes = get_flashed_messages(category_filter=['login_error']) %}
+                    {% if mensajes %}
+                <div class="error-login">
+                    {{ mensajes[0] }}
+                </div>
+                    {% endif %}
+                    {% endwith %}
+                <div class="opcion">
+                    <img src="{{ url_for('static', filename='img/Login/rut.jpg') }}" alt="icono">
+                    <input type="text" name="username_or_email" placeholder="RUT o correo" required>
+                </div>
+
+                <div class="opcion">
+                    <img src="{{ url_for('static', filename='img/Login/contraseña.png') }}" alt="icono">
+                    <input type="password" name="password" placeholder="CONTRASEÑA" required>
+                </div>
+                <p class="olvidar_contra">
+                    <a href="{{ url_for('olvidaste') }}">Olvidaste tu contraseña?</a>
+                </p>
+
+                <button class="buttom " >
+                    <span class="inciar_text">INICIAR SESIÓN</span>
+                </button>
+            </form>
+
+            <p class="pregunta">¿No tienes una cuenta?</p>
+
+            <button class="buttom dos">
+                <a class="register_" href="{{ url_for('register') }}">Regístrate</a>
+            </button>
+
+            <p class="menor">
+                <a href="{{ url_for('login') }}">Soy menor de edad.</a>
+            </p>
+        </section>
+
+
+
+    </main>
+</body>
+</html>

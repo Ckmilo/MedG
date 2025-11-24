@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventana | MedG</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <section class="fondo">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="fondo">
+    </section>
+    <div class="modal-registro">
+        <div class="modal-registro__content">
+            <h2>¡Registro exitoso!</h2>
+            <p>Tu cuenta se ha creado correctamente.</p>
+            <a href="{{ url_for('login') }}" class="modal-registro__btn">Aceptar</a>
+        </div>
+    </div>
+
+</body>
+</html>

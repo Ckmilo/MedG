@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register / MedG</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='register_style.css') }}">
+</head>
+
+
+<body>
+
+    
+
+
+    
+
+    <main>
+        <section class="logo">
+            <div class="logo_img">
+                <h1>Med</h1>
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo">
+            </div>
+            <p>Tu salud digital, más cerca</p>
+        </section>
+
+        <section class="fondo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="fondo">
+        </section>
+
+
+        <section class="box_contenido">
+            
+            <form class="formulario" action="{{ url_for('register') }}" method="POST">
+                {% with mensajes = get_flashed_messages(category_filter=['register_error']) %}
+                {% if mensajes %}
+                <div class="error-login">
+                {{ mensajes[0] }}
+                </div>
+                {% endif %}
+                {% endwith %}
+
+                {% with mensajes = get_flashed_messages(category_filter=['contraseña_error']) %}
+                {% if mensajes %}
+                <div class="error-login">
+                {{ mensajes[0] }}
+                </div>
+                {% endif %}
+                {% endwith %}
+
+
+                <div class="opcion">
+                    <input type="text" name="nombre_completo" placeholder="NOMBRE COMPLETO">
+                </div>
+
+                <div class="opcion">
+                    <input type="text" name="username" placeholder="RUT" required>
+                </div>
+
+                <p class="requisitos_rut">
+                    Rut debe cumplir con formato 9 dígitos y guión.
+                </p>
+                <div class="opcion">
+                    <img src="{{ url_for('static', filename='img/Register/calendario.jpg') }}" alt="icono">
+                    <input type="date" name="fecha_nacimiento" required>
+                </div>
+                <div class="opcion">
+                    <img src="{{ url_for('static', filename='img/Register/correo.png') }}" alt="icono">
+                    <input type="email" name="email" placeholder="CORREO ELECTRÓNICO" required>
+                </div>
+                <div class="opcion">
+                    <img src="{{ url_for('static', filename='img/Register/contraseña.png') }}" alt="icono">
+                    <input type="password" name="password" placeholder="CONTRASEÑA" required>
+                </div>
+                <div class="opcion">
+                    <img src="{{ url_for('static', filename='img/Register/contraseña.png') }}" alt="icono">
+                    <input type="password" name="confirm" placeholder="REPITA SU CONTRASEÑA" required>
+                </div>
+                <button class="buttom dos" type="submit">
+                    <span class="register_">Regístrate</span>
+                </button>
+            </form>
+
+            <p class="preguntar">
+                ¿Ya tienes una cuenta? 
+                <a href="{{ url_for('login') }}">Ingresa aquí.</a>
+            </p>
+        </section>
+
+     
+
+        
+    </main>
+</body>
+</html>
+
+
+

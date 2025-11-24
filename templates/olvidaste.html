@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Recuperar contraseña / MedG</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_style.css') }}">
+</head>
+<body>
+    <section class="fondo">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="fondo">
+    </section>
+
+    <main>
+        <section class="logo">
+            <div class="logo_img">
+                <h1>Med</h1>
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo">
+            </div>
+            <p>Recupera tu contraseña</p>
+        </section>
+
+        <form class="formulario" action="{{ url_for('olvidaste') }}" method="POST">
+            {% with mensajes = get_flashed_messages() %}
+              {% if mensajes %}
+                <div class="error-login">
+                    {{ mensajes[0] }}
+                </div>
+              {% endif %}
+            {% endwith %}
+
+            <div class="opcion">
+                <input type="text" name="username_or_email"
+                       placeholder="RUT o correo registrado" required>
+            </div>
+
+            <div class="opcion">
+                <input type="password" name="password"
+                       placeholder="Nueva contraseña" required>
+            </div>
+
+            <div class="opcion">
+                <input type="password" name="confirm"
+                       placeholder="Repite la nueva contraseña" required>
+            </div>
+
+            <button class="buttom 1" type="submit">
+                <span class="inciar_text">Actualizar contraseña</span>
+            </button>
+
+            <p class="pregunta">
+                <a href="{{ url_for('login') }}">Volver al login</a>
+            </p>
+        </form>
+    </main>
+</body>
+</html>
