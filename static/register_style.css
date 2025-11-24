@@ -1,0 +1,41 @@
+
+.formulario {
+    margin-top: 13vh;
+}
+
+.requisitos_rut{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #0296FF;
+}
+
+/* pregunta */
+
+.preguntar{
+margin: 3px 20px ;
+font-weight: 500;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: 0.1px;
+color: #465B69;
+}
+
+@media (min-width: 768px) {
+   
+    .formulario {
+        margin-top: 17vh;
+    }
+
+    .buttom {
+        margin-top: 10px;
+    }
+
+    .preguntar{
+        text-align: center;
+    }
+
+    .box_contenido{
+        margin-top: -70px;
+    }
+}
